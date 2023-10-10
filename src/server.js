@@ -31,6 +31,10 @@ const projectsPath = path.join(__dirname, 'projects.json'); */
 
 app.use('/auth', authRoutes);
 app.use('/', projectsRoutes);
+
+app.get('*', function(request, response) {
+  response.sendFile(__dirname + '/public/index.html');
+});
 /* async function run() {
   try {
     await client.connect();
