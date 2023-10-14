@@ -72,4 +72,25 @@ const login = asyncHandler(async (req, res) => {
 
 });
 
-module.exports = login;
+const me = asyncHandler(async (req, res) => {
+
+    const user = req.user || null;
+    if (!user) return res.status(400).json({message: 'kullanıcı bulunamadı'});
+
+
+    return res.status(200).json({
+        message: "başarılı",
+        user: user
+    })
+    
+
+
+});
+
+
+
+module.exports = {
+    login,
+    me
+}
+
